@@ -2,35 +2,73 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  font-family: 'Space Grotesk', sans-serif;
+  background: #0f0c29; /* Fondo oscuro */
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
   overflow: hidden;
 }
 
+/* Animación de fondo */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  z-index: -1;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Contenedor principal */
 .container {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2.5rem;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  width: 90%;
   max-width: 500px;
-  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tarjeta central */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Título */
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #fff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.highlight {
+  color: #6a11cb;
+  font-weight: 800;
 }
 
 /* Texto descriptivo */
@@ -42,23 +80,52 @@ p {
 
 /* Botón de descarga */
 .download-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 1.2rem 2.5rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #6a11cb;
-  background-color: #fff;
+  color: #fff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+}
+
+.download-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .download-btn:hover {
-  background-color: #6a11cb;
-  color: #fff;
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.download-btn .icon {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.download-btn:hover .icon {
+  transform: translateY(5px);
 }
 
 /* Pie de página */
@@ -66,9 +133,36 @@ p {
   margin-top: 2rem;
   font-size: 0.9rem;
   color: #e0e0e0;
+  opacity: 0.8;
 }
 
-/* Animaciones */
-.animate__animated {
-  animation-duration: 1s;
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .download-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .download-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
 }
