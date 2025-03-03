@@ -1,0 +1,74 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Contenedor principal */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Título */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Texto descriptivo */
+p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+}
+
+/* Botón de descarga */
+.download-btn {
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #6a11cb;
+  background-color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn:hover {
+  background-color: #6a11cb;
+  color: #fff;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Pie de página */
+.footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+
+/* Animaciones */
+.animate__animated {
+  animation-duration: 1s;
+}
