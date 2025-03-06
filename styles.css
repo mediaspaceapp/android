@@ -39,6 +39,7 @@ body {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
+  margin-bottom: 180px; /* Margen inferior más grande para separar el contenido del banner */
 }
 
 /* Tarjeta central */
@@ -130,7 +131,19 @@ p {
 
 /* Pie de página */
 .footer {
-  margin-top: 2rem;
+  position: fixed; /* Fijar el pie de página en la parte inferior */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  z-index: 3; /* Asegurar que esté por encima del banner */
+}
+
+.footer p {
+  margin: 0;
   font-size: 0.9rem;
   color: #e0e0e0;
   opacity: 0.8;
@@ -139,18 +152,22 @@ p {
 /* Banner inferior */
 .banner {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  bottom: 80px; /* Separación del pie de página */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
   height: 100px; /* Altura del banner */
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px; /* Esquinas redondeadas */
+  z-index: 2; /* Asegurar que esté por encima del fondo pero debajo del pie de página */
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .banner-content {
@@ -208,8 +225,13 @@ p {
     font-size: 1rem;
   }
 
+  .container {
+    margin-bottom: 160px; /* Ajuste para tablets */
+  }
+
   .banner {
     height: 90px;
+    bottom: 70px; /* Ajuste de posición para tablets */
   }
 
   .banner-content {
@@ -237,8 +259,13 @@ p {
     font-size: 0.9rem;
   }
 
+  .container {
+    margin-bottom: 150px; /* Ajuste para móviles */
+  }
+
   .banner {
     height: 80px;
+    bottom: 60px; /* Ajuste de posición para móviles */
   }
 
   .banner-content i {
