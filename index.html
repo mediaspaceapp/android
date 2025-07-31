@@ -2,47 +2,283 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Descargar INI-48</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Iconos de FontAwesome para Telegram -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Redirección en curso...</title>
+  <!-- Fuentes de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+  <!-- Iconos Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Lottie Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+  <style>
+    :root {
+      --neon-color: #0fa;
+      --neon-glow: 0 0 10px rgba(10, 255, 170, 0.8),
+                  0 0 20px rgba(10, 255, 170, 0.6),
+                  0 0 30px rgba(10, 255, 170, 0.4);
+    }
+    
+    body {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* Efecto de partículas */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    /* Contenedor principal */
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 30px rgba(10, 255, 170, 0.2);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(10, 255, 170, 0.1);
+      max-width: 600px;
+      width: 90%;
+    }
+    
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--neon-color);
+      text-shadow: var(--neon-glow);
+      letter-spacing: 2px;
+      animation: pulse 1.5s infinite alternate;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    /* Barra de progreso */
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #00ffaa, #00b7ff);
+      border-radius: 10px;
+      animation: progress 5s linear forwards;
+      box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+    }
+    
+    /* Iconos */
+    .icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .icon {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.3s ease;
+    }
+    
+    .icon:hover {
+      color: var(--neon-color);
+      transform: translateY(-5px);
+      text-shadow: var(--neon-glow);
+    }
+    
+    /* Efecto de conexión */
+    .connection {
+      position: relative;
+      margin: 2rem auto;
+      width: 150px;
+      height: 150px;
+    }
+    
+    /* Animaciones */
+    @keyframes pulse {
+      from {
+        text-shadow: var(--neon-glow);
+      }
+      to {
+        text-shadow: 0 0 20px rgba(10, 255, 170, 1),
+                     0 0 40px rgba(10, 255, 170, 0.8),
+                     0 0 60px rgba(10, 255, 170, 0.6);
+      }
+    }
+    
+    @keyframes progress {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Efecto de brillo al cargar */
+    .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle at center, rgba(10, 255, 170, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
 </head>
 <body>
-  <div class="background-animation"></div>
-  <div class="container">
-    <div class="card">
-      <h1>Descarga <span class="highlight">INI-48</span></h1>
-      <p>Haz clic en el botón de abajo para obtener el archivo.</p>
-      <a href="INI-48.zip" download class="download-btn">
-        <span>Descargar Ahora</span>
-        <div class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-        </div>
-      </a>
+  <div class="particles" id="particles-js"></div>
+  <div class="glow"></div>
+  
+  <div class="container animate__animated animate__fadeIn">
+    <div class="connection" id="lottie-animation"></div>
+    
+    <h2>Buscando archivo android...</h2>
+    <p>No cierre esta ventana.</p>
+    
+    <div class="progress-container">
+      <div class="progress-bar"></div>
     </div>
-    <div class="footer">
-      <p>© 2025 jexeregedit.</p>
-    </div>
-  </div>
-  <!-- Banner inferior -->
-  <div class="banner">
-    <div class="banner-content">
-      <i class="fab fa-telegram"></i> <!-- Icono de Telegram -->
-      <div class="banner-text">
-        <p>Únete a nuestro canal de <strong>pronósticos deportivos</strong>.</p>
-        <p>Analisis profundos y rentabilidad asegurada.</p>
-      </div>
-      <a href="https://t.me/+Jw4pxitC-KtkODJh" target="_blank" class="banner-btn">Únete ahora</a>
+    
+    <div class="icons">
+      <i class="fas fa-shield-alt icon animate__animated animate__fadeInUp"></i>
+      <i class="fas fa-download icon animate__animated animate__fadeInUp animate__delay-1s"></i>
+      <i class="fas fa-mobile-alt icon animate__animated animate__fadeInUp animate__delay-2s"></i>
     </div>
   </div>
+
+  <script>
+    // Abrir los 3 anuncios en nuevas pestañas
+    window.open("https://otieu.com/4/9390333", "_blank");
+    window.open("https://otieu.com/4/7889357", "_blank");
+    window.open("https://otieu.com/4/8132148", "_blank");
+
+    // Redirigir al archivo final luego de 5 segundos
+    setTimeout(function() {
+      window.location.href = "https://www.mediafire.com/file/n3spigr91r6ly03/SUPERXIT99%2525.zip/file";
+    }, 5000);
+
+    // Inicializar animación Lottie
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animación de conexión (puedes reemplazar con tu propia animación JSON)
+      const animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://assets9.lottiefiles.com/packages/lf20_kkflmtur.json' // Animación de conexión
+      });
+      
+      // Efecto de partículas
+      const particlesScript = document.createElement('script');
+      particlesScript.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+      particlesScript.onload = function() {
+        particlesJS('particles-js', {
+          "particles": {
+            "number": {
+              "value": 80,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#0fa"
+            },
+            "shape": {
+              "type": "circle"
+            },
+            "opacity": {
+              "value": 0.5,
+              "random": true
+            },
+            "size": {
+              "value": 3,
+              "random": true
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#0fa",
+              "opacity": 0.2,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2,
+              "direction": "none",
+              "random": true,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": true,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "grab"
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 140,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "push": {
+                "particles_nb": 4
+              }
+            }
+          },
+          "retina_detect": true
+        });
+      };
+      document.head.appendChild(particlesScript);
+    });
+  </script>
 </body>
 </html>
