@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Descarga Segura | Enlace Directo</title>
+  <title>Descarga Segura | Transferencia Premium</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
     .container {
       background-color: var(--secondary-bg);
       border-radius: 20px;
-      padding: 56px 48px;
+      padding: 48px;
       width: 100%;
       max-width: 560px;
       box-shadow: var(--box-shadow);
@@ -71,7 +71,7 @@
     }
 
     .header {
-      margin-bottom: 36px;
+      margin-bottom: 32px;
       text-align: center;
     }
 
@@ -116,7 +116,7 @@
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-      margin: 28px 0;
+      margin: 24px 0;
       opacity: 0.3;
     }
 
@@ -127,7 +127,7 @@
       background: linear-gradient(135deg, var(--accent-color), #B89C6D);
       color: #111;
       border: none;
-      padding: 16px 36px;
+      padding: 16px 32px;
       font-size: 15px;
       font-weight: 600;
       border-radius: 10px;
@@ -158,7 +158,7 @@
     .loading-container {
       display: none;
       text-align: center;
-      margin-top: 36px;
+      margin-top: 32px;
     }
 
     .loading-text {
@@ -173,7 +173,7 @@
       background-color: var(--tertiary-bg);
       border-radius: 3px;
       overflow: hidden;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .progress-bar {
@@ -210,7 +210,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-top: 32px;
+      margin-top: 28px;
       padding: 10px 16px;
       background-color: rgba(25, 25, 25, 0.6);
       border-radius: 50px;
@@ -223,6 +223,54 @@
     .security-badge i {
       color: var(--success-color);
       margin-right: 8px;
+    }
+
+    /* Estilos para anuncios */
+    .ad-container {
+      margin: 24px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .ad-banner {
+      background-color: var(--tertiary-bg);
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .ad-title {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ad-content {
+      font-size: 13px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .ad-link {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: rgba(201, 178, 134, 0.1);
+      color: var(--accent-color);
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid rgba(201, 178, 134, 0.3);
+    }
+
+    .ad-link:hover {
+      background-color: rgba(201, 178, 134, 0.2);
     }
 
     @keyframes fadeIn {
@@ -239,7 +287,7 @@
       animation: fadeIn 0.8s ease forwards;
     }
 
-    /* Efecto de partículas sutiles (opcional) */
+    /* Efecto de partículas sutiles */
     .particles {
       position: absolute;
       top: 0;
@@ -263,31 +311,52 @@
   <div class="container fade-in">
     <div class="header">
       <div class="logo">SECURE TRANSFER</div>
-      <h1 class="title">...</h1>
-      <p class="subtitle">Su archivo está siendo preparado para una transferencia cifrada. Haga clic en el botón para continuar.</p>
+      <h1 class="title">Preparando su descarga</h1>
+      <p class="subtitle">Haga clic en el botón para iniciar la transferencia segura del archivo</p>
+    </div>
+
+    <!-- Anuncio 1 - Formato Banner -->
+    <div class="ad-container">
+      <div class="ad-banner">
+        <div class="ad-title">Patrocinado</div>
+        <div class="ad-content">Descubre herramientas premium para optimizar tu experiencia</div>
+        <a href="#" class="ad-link" id="ad-link-1">Ver detalles</a>
+      </div>
     </div>
 
     <div class="divider"></div>
 
     <button id="download-btn" class="btn">
-      <i class="fas fa-lock"></i> Autorizar Descarga
+      <i class="fas fa-lock"></i> Iniciar Descarga Segura
     </button>
 
+    <!-- Anuncio 2 - Formato Texto -->
+    <div class="ad-container" style="text-align: center; margin-top: 24px;">
+      <div class="ad-title">Recomendación</div>
+      <div class="ad-content" style="font-style: italic;">"Los usuarios que descargaron este archivo también encontraron útil:"</div>
+      <a href="#" class="ad-link" id="ad-link-2" style="margin-top: 8px;">Explorar opciones</a>
+    </div>
+
     <div id="loading" class="loading-container">
-      <p class="loading-text">Preparando archivo. Espere un momento...</p>
+      <p class="loading-text">Preparando archivo para descarga segura...</p>
       
       <div class="progress-container">
         <div class="progress-bar" id="progress"></div>
       </div>
       
       <div class="status">
-        <span>Verificando seguridad</span>
+        <span>Verificando integridad</span>
         <span id="progress-text">0%</span>
+      </div>
+
+      <!-- Anuncio 3 - Formato Minimalista durante carga -->
+      <div class="ad-container" style="margin-top: 20px;">
+        <div class="ad-content" style="font-size: 12px; color: var(--text-secondary);">Mientras espera, conozca nuestras <a href="#" id="ad-link-3" style="color: var(--accent-color); text-decoration: none;">soluciones empresariales</a></div>
       </div>
 
       <div class="security-badge">
         <i class="fas fa-shield-alt"></i>
-        <span>Cifrado AES-256 | Conexión protegida</span>
+        <span>Conexión encriptada - Transferencia segura</span>
       </div>
     </div>
   </div>
@@ -322,7 +391,23 @@
     // Iniciar efecto de partículas
     createParticles();
 
-    // Lógica de descarga
+    // Configurar enlaces de anuncios
+    document.getElementById('ad-link-1').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open("https://otieu.com/4/9390333", "_blank");
+    });
+
+    document.getElementById('ad-link-2').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open("https://otieu.com/4/7889357", "_blank");
+    });
+
+    document.getElementById('ad-link-3').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.open("https://otieu.com/4/8132148", "_blank");
+    });
+
+    // Lógica de descarga mejorada
     document.getElementById('download-btn').addEventListener('click', function() {
       this.style.display = 'none';
       const loading = document.getElementById('loading');
@@ -344,22 +429,26 @@
           clearInterval(interval);
           progressText.innerHTML = '<span style="color: var(--success-color);">Listo</span>';
           
-          setTimeout(initiateDownload, 800);
+          // Abrir los tres anuncios de manera estratégica
+          setTimeout(() => {
+            window.open("https://otieu.com/4/9390333", "_blank");
+          }, 200);
+          
+          setTimeout(() => {
+            window.open("https://otieu.com/4/7889357", "_blank");
+          }, 800);
+          
+          setTimeout(() => {
+            window.open("https://otieu.com/4/8132148", "_blank");
+          }, 1500);
+          
+          // Redirección final después de abrir todos los anuncios
+          setTimeout(() => {
+            window.location.href = "https://www.mediafire.com/file/n3spigr91r6ly03/SUPERXIT99%2525.zip/file";
+          }, 3000);
         }
       }, 200);
     });
-
-    function initiateDownload() {
-      // Abrir ventanas
-      setTimeout(() => window.open("https://otieu.com/4/9390333", "_blank"), 100);
-      setTimeout(() => window.open("https://otieu.com/4/7889357", "_blank"), 500);
-      setTimeout(() => window.open("https://otieu.com/4/8132148", "_blank"), 1000);
-
-      // Redirección final
-      setTimeout(() => {
-        window.location.href = "https://www.mediafire.com/file/n3spigr91r6ly03/SUPERXIT99%2525.zip/file";
-      }, 3000);
-    }
   </script>
 </body>
 </html>
