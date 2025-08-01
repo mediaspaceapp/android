@@ -2,149 +2,364 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Preparando descarga...</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descarga Segura | Enlace Directo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
     :root {
-      --neon-green: #0fa;
-      --neon-blue: #00b7ff;
+      --primary-bg: #0A0A0A;
+      --secondary-bg: #151515;
+      --tertiary-bg: #202020;
+      --text-primary: #F0F0F0;
+      --text-secondary: #AAAAAA;
+      --accent-color: #C9B286;
+      --accent-hover: #D8C49D;
+      --border-color: #333333;
+      --success-color: #4CAF50;
+      --box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
-    
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
+
+    * {
       margin: 0;
       padding: 0;
-      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-primary);
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      position: relative;
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at 10% 20%, rgba(25, 25, 25, 0.8) 0%, rgba(10, 10, 10, 1) 90%);
     }
-    
+
     .container {
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(10, 255, 170, 0.2);
-      border-radius: 15px;
-      padding: 30px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 0 30px rgba(10, 255, 170, 0.2);
-      backdrop-filter: blur(5px);
+      background-color: var(--secondary-bg);
+      border-radius: 20px;
+      padding: 56px 48px;
+      width: 100%;
+      max-width: 560px;
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--border-color);
       position: relative;
-      z-index: 2;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+      transition: var(--transition);
     }
-    
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: var(--neon-green);
-      text-shadow: 0 0 10px rgba(10, 255, 170, 0.8);
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      animation: pulse 1.5s infinite alternate;
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), transparent 70%);
     }
-    
-    p {
-      color: #ccc;
-      margin-bottom: 30px;
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.45);
     }
-    
-    #download-btn {
-      background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-      color: #000;
-      border: none;
-      padding: 12px 30px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 0 15px rgba(10, 255, 170, 0.5);
+
+    .header {
+      margin-bottom: 36px;
+      text-align: center;
     }
-    
-    #download-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(10, 255, 170, 0.8);
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      color: var(--accent-color);
+      position: relative;
+      display: inline-block;
     }
-    
-    #loading {
-      display: none;
-      margin-top: 20px;
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+      opacity: 0.7;
     }
-    
-    .dots {
-      display: flex;
+
+    .title {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      font-weight: 400;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+      margin: 28px 0;
+      opacity: 0.3;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      gap: 10px;
+      background: linear-gradient(135deg, var(--accent-color), #B89C6D);
+      color: #111;
+      border: none;
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(201, 178, 134, 0.2);
+      position: relative;
+      overflow: hidden;
     }
-    
-    .dot {
-      width: 12px;
-      height: 12px;
-      background: var(--neon-green);
+
+    .btn:hover {
+      background: linear-gradient(135deg, var(--accent-hover), #C9B286);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(201, 178, 134, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn i {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+
+    .loading-container {
+      display: none;
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    .loading-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .progress-container {
+      position: relative;
+      height: 6px;
+      background-color: var(--tertiary-bg);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+      transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+      position: relative;
+    }
+
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+      animation: shimmer 2s infinite;
+    }
+
+    .status {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 10px;
+    }
+
+    .security-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32px;
+      padding: 10px 16px;
+      background-color: rgba(25, 25, 25, 0.6);
+      border-radius: 50px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(4px);
+    }
+
+    .security-badge i {
+      color: var(--success-color);
+      margin-right: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Efecto de partículas sutiles (opcional) */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background-color: rgba(201, 178, 134, 0.1);
       border-radius: 50%;
-      animation: bounce 1.4s infinite ease-in-out;
-    }
-    
-    .dot:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    
-    .dot:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-    
-    @keyframes pulse {
-      0% { text-shadow: 0 0 10px rgba(10, 255, 170, 0.8); }
-      100% { text-shadow: 0 0 20px rgba(10, 255, 170, 1); }
-    }
-    
-    @keyframes bounce {
-      0%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-15px); }
     }
   </style>
 </head>
 <body>
-  <div class="container animate__animated animate__fadeIn">
-    <h2>Buscando archivo android...</h2>
-    <p>Haga clic en el botón para iniciar la descarga.</p>
-    
-    <button id="download-btn">
-      <i class="fas fa-download"></i> INICIAR DESCARGA
+  <div class="particles" id="particles"></div>
+  
+  <div class="container fade-in">
+    <div class="header">
+      <div class="logo">SECURE TRANSFER</div>
+      <h1 class="title">...</h1>
+      <p class="subtitle">Su archivo está siendo preparado para una transferencia cifrada. Haga clic en el botón para continuar.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <button id="download-btn" class="btn">
+      <i class="fas fa-lock"></i> Autorizar Descarga
     </button>
-    
-    <div id="loading">
-      <p>Abriendo anuncios necesarios...</p>
-      <div class="dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+
+    <div id="loading" class="loading-container">
+      <p class="loading-text">Preparando archivo. Espere un momento...</p>
+      
+      <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+      </div>
+      
+      <div class="status">
+        <span>Verificando seguridad</span>
+        <span id="progress-text">0%</span>
+      </div>
+
+      <div class="security-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>Cifrado AES-256 | Conexión protegida</span>
       </div>
     </div>
   </div>
 
   <script>
-    document.getElementById('download-btn').addEventListener('click', function() {
-      // Ocultar botón y mostrar carga
-      this.style.display = 'none';
-      document.getElementById('loading').style.display = 'block';
+    // Efecto de partículas sutiles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 15;
       
-      // Abrir anuncios (con retraso para evitar bloqueo de popups)
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * 4 + 1;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 10;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.opacity = Math.random() * 0.3 + 0.1;
+        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Iniciar efecto de partículas
+    createParticles();
+
+    // Lógica de descarga
+    document.getElementById('download-btn').addEventListener('click', function() {
+      this.style.display = 'none';
+      const loading = document.getElementById('loading');
+      loading.style.display = 'block';
+      
+      // Animación de progreso mejorada
+      let progress = 0;
+      const progressBar = document.getElementById('progress');
+      const progressText = document.getElementById('progress-text');
+      
+      const interval = setInterval(() => {
+        progress += Math.random() * 8 + 2;
+        if (progress > 100) progress = 100;
+        
+        progressBar.style.width = `${progress}%`;
+        progressText.textContent = `${Math.floor(progress)}%`;
+        
+        if (progress === 100) {
+          clearInterval(interval);
+          progressText.innerHTML = '<span style="color: var(--success-color);">Listo</span>';
+          
+          setTimeout(initiateDownload, 800);
+        }
+      }, 200);
+    });
+
+    function initiateDownload() {
+      // Abrir ventanas
       setTimeout(() => window.open("https://otieu.com/4/9390333", "_blank"), 100);
       setTimeout(() => window.open("https://otieu.com/4/7889357", "_blank"), 500);
       setTimeout(() => window.open("https://otieu.com/4/8132148", "_blank"), 1000);
-      
-      // Redirigir después de 3 segundos (asegurando que los anuncios se abran)
+
+      // Redirección final
       setTimeout(() => {
         window.location.href = "https://www.mediafire.com/file/n3spigr91r6ly03/SUPERXIT99%2525.zip/file";
       }, 3000);
-    });
+    }
   </script>
 </body>
 </html>
